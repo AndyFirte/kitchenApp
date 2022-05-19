@@ -101,7 +101,7 @@ export default function App() {
       content = <ProcedureGalletas changeScreen={changeScreen} />;
       break;
     case 3:
-      titleHeader = "Pastel de vainilla: Ingredientes";
+      titleHeader = "Cupcakes de vainilla: Ingredientes";
       content = (
         <PastelVainilla
           volume={volume}
@@ -113,7 +113,7 @@ export default function App() {
       );
       break;
     case 4:
-      titleHeader = "Pastel de vainilla: Procedimiento";
+      titleHeader = "Cupcakes de vainilla: Procedimiento";
       content = <ProcedurePastel changeScreen={changeScreen} />;
       break;
     default:

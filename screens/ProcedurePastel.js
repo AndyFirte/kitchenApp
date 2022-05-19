@@ -44,8 +44,9 @@ const ProcedurePastel = ({ changeScreen }) => {
           </li>
           <li>
             <input type="checkbox" />
-            En un molde previamente engrasado o forrado con papel pergamino,
-            verter la masa.
+            En un molde para cupcakes previamente engrasado o con capacillos
+            vertemos la masa, no debemos llenar hasta el tope sino 2/3 del
+            molde.
           </li>
           <li>
             <input type="checkbox" />
@@ -55,18 +56,20 @@ const ProcedurePastel = ({ changeScreen }) => {
           <li>
             <input type="checkbox" />
             Dejar enfriar durante 10 mins o hasta que se pueda tocar el molde
-            sin quemarse antes de desmontarlo.{" "}
+            sin quemarse antes de retirar los cupcakes.{" "}
           </li>
         </ol>
       </Text>
-      <Button
-        style={styles.button}
-        title="Regresar a ingredientes"
-        color={myColors.primary}
-        onPress={() => {
-          changeScreen(3);
-        }}
-      />
+      <View style={styles.buttonContainer}>
+        <Button
+          style={styles.button}
+          title="Regresar a ingredientes"
+          color={myColors.primary}
+          onPress={() => {
+            changeScreen(3);
+          }}
+        />
+      </View>
     </View>
   );
 };
@@ -74,6 +77,11 @@ const ProcedurePastel = ({ changeScreen }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 20,
   },
   ingredients: {
     flex: 1,

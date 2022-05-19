@@ -60,14 +60,16 @@ const ProcedureGalletas = ({ changeScreen }) => {
           </li>
         </ol>
       </Text>
-      <Button
-        style={styles.button}
-        title="Regresar a ingredientes"
-        color={myColors.primary}
-        onPress={() => {
-          changeScreen(1);
-        }}
-      />
+      <View style={styles.buttonContainer}>
+        <Button
+          style={styles.button}
+          title="Regresar a ingredientes"
+          color={myColors.primary}
+          onPress={() => {
+            changeScreen(1);
+          }}
+        />
+      </View>
     </View>
   );
 };
@@ -75,6 +77,11 @@ const ProcedureGalletas = ({ changeScreen }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 20,
   },
   ingredients: {
     flex: 1,

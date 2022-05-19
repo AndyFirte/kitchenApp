@@ -22,7 +22,7 @@ const StartScreen = ({ changeScreen }) => {
             </View>
           </Card>
           <Card>
-            <Text style={styles.text}>Pastel de vainilla</Text>
+            <Text style={styles.text}>Cupcakes de vainilla</Text>
             <View style={styles.buttonContainer}>
               <Button
                 title="Ir"
