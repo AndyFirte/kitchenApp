@@ -3,6 +3,7 @@ import Ingredient from "../components/Ingredient";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { useState } from "react";
 import myColors from "../constants/colors";
+import axios from "axios";
 
 const standardSugarMassInG = 59.1470591;
 const oilVolumeInMl = 160;
@@ -113,8 +114,39 @@ const PastelVainilla = ({
     setFlourMass(newFlourMass);
   };
 
+  const [data, setData] = useState([]);
+
+  const pedirGifs = () => {
+    console.log("se pide gifs");
+    const fetchData = async () => {
+      const results = await axios("http://api.giphy.com/v1/gifs/search", {
+        params: {
+          api_key: "GZSWXTYbno6v2HVPLP8HccMvOiKxWIMB",
+          q: "vanilla cake",
+          limit: 1,
+          offset: 3,
+        },
+      });
+      setData(results.data.data);
+    };
+    fetchData();
+  };
+
+  const renderGif = () => {
+    return data.map((el) => {
+      return (
+        <div key={el.id} className="gif">
+          <img src={el.images.fixed_height.url} />
+        </div>
+      );
+    });
+  };
+
+  pedirGifs();
+
   return (
-    <View style={styles.ingredients}>
+    <View style={styles.screen}>
+      <div>{renderGif()}</div>
       <Text>Ingredientes:</Text>
       <Text>
         <ul>
@@ -178,7 +210,7 @@ const PastelVainilla = ({
           </li>
         </ul>
       </Text>
-      <View>
+      <View style={styles.buttonContainer}>
         <Button
           style={styles.button}
           title="Ir a procedimiento"
@@ -188,7 +220,7 @@ const PastelVainilla = ({
           }}
         />
       </View>
-      <View>
+      <View style={styles.buttonContainer}>
         <Button
           style={styles.button}
           title="Regresar a Home"
@@ -203,14 +235,17 @@ const PastelVainilla = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
+    padding: 10,
+    alignItems: "center",
+    flexDirection: "column",
   },
-  ingredients: {
-    flex: 1,
-    paddingLeft: 20,
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 20,
   },
-  button: {},
 });
 
 export default PastelVainilla;

@@ -4,41 +4,52 @@ import myColors from "../constants/colors";
 
 const StartScreen = ({ changeScreen }) => {
   return (
-    <View>
+    <View style={styles.screen}>
       <Text>Esta es la página principal</Text>
       <View>
-        <Text>Galletas con chispas</Text>
-        <Button
-          style={styles.button}
-          title="Ir"
-          color={myColors.secondary}
-          onPress={() => {
-            changeScreen(1);
-          }}
-        />
-        <Text>Pastel de vainilla</Text>
-        <Button
-          style={styles.button}
-          title="Ir"
-          color={myColors.secondary}
-          onPress={() => {
-            changeScreen(3);
-          }}
-        />
+        <ul>
+          <li>
+            <Text>Galletas con chispas</Text>
+            <View style={styles.buttonContainer}>
+              <Button
+                title="Ir"
+                color={myColors.secondary}
+                onPress={() => {
+                  changeScreen(1);
+                }}
+              />
+            </View>
+          </li>
+          <li>
+            <Text>Pastel de vainilla</Text>
+            <View style={styles.buttonContainer}>
+              <Button
+                title="Ir"
+                color={myColors.secondary}
+                onPress={() => {
+                  changeScreen(3);
+                }}
+              />
+            </View>
+          </li>
+        </ul>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
+    padding: 10,
+    alignItems: "center",
+    flexDirection: "column",
   },
-  ingredients: {
-    flex: 1,
-    paddingLeft: 20,
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 20,
   },
-  button: {},
 });
 
 export default StartScreen;

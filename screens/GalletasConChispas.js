@@ -3,7 +3,7 @@ import Ingredient from "../components/Ingredient";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { useState, useEffect } from "react";
 import myColors from "../constants/colors";
-//import axios from "axios";
+import axios from "axios";
 
 const brownSugarVolumeInMl = 59.1470591;
 const standardSugarVolumeInMl = 59.1470591;
@@ -136,20 +136,38 @@ const GalletasConChispas = ({
     setChocoChipsVolume(newChocoChipsVolume);
   };
 
-  /*useEffect(() => {
+  const [data, setData] = useState([]);
+
+  const pedirGifs = () => {
+    console.log("se pide gifs");
     const fetchData = async () => {
       const results = await axios("http://api.giphy.com/v1/gifs/search", {
         params: {
           api_key: "GZSWXTYbno6v2HVPLP8HccMvOiKxWIMB",
+          q: "Chocolate chip cookie",
+          limit: 1,
         },
       });
-    }
-    console.log(results)
-    fetchData()
-  })*/
+      setData(results.data.data);
+    };
+    fetchData();
+  };
+
+  const renderGif = () => {
+    return data.map((el) => {
+      return (
+        <div key={el.id} className="gif">
+          <img src={el.images.fixed_height.url} />
+        </div>
+      );
+    });
+  };
+
+  pedirGifs();
 
   return (
-    <View style={styles.ingredients}>
+    <View style={styles.screen}>
+      <div>{renderGif()}</div>
       <Text>Ingredientes:</Text>
       <Text>
         <ul>
@@ -223,9 +241,8 @@ const GalletasConChispas = ({
           </li>
         </ul>
       </Text>
-      <View>
+      <View style={styles.buttonContainer}>
         <Button
-          style={styles.button}
           title="Ir a procedimiento"
           color={myColors.primary}
           onPress={() => {
@@ -233,9 +250,8 @@ const GalletasConChispas = ({
           }}
         />
       </View>
-      <View>
+      <View style={styles.buttonContainer}>
         <Button
-          style={styles.button}
           title="Regresar a Home"
           color={myColors.secondary}
           onPress={() => {
@@ -248,14 +264,17 @@ const GalletasConChispas = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
+    padding: 10,
+    alignItems: "center",
+    flexDirection: "column",
   },
-  ingredients: {
-    flex: 1,
-    paddingLeft: 20,
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 20,
   },
-  button: {},
 });
 
 export default GalletasConChispas;

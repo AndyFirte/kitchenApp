@@ -121,7 +121,7 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.screen}>
       <Header style={styles.screen} title={titleHeader} />
       {content}
     </View>
@@ -129,12 +129,15 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
+    padding: 10,
+    alignItems: "center",
+    flexDirection: "column",
   },
-  ingredients: {
-    flex: 1,
-    paddingLeft: 20,
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 20,
   },
-  button: {},
 });
