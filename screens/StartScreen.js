@@ -6,33 +6,26 @@ const StartScreen = ({ changeScreen }) => {
   return (
     <View style={styles.screen}>
       <Text>Esta es la página principal</Text>
-      <View>
-        <ul>
-          <li>
-            <Text>Galletas con chispas</Text>
-            <View style={styles.buttonContainer}>
-              <Button
-                title="Ir"
-                color={myColors.secondary}
-                onPress={() => {
-                  changeScreen(1);
-                }}
-              />
-            </View>
-          </li>
-          <li>
-            <Text>Pastel de vainilla</Text>
-            <View style={styles.buttonContainer}>
-              <Button
-                title="Ir"
-                color={myColors.secondary}
-                onPress={() => {
-                  changeScreen(3);
-                }}
-              />
-            </View>
-          </li>
-        </ul>
+
+      <Text>Galletas con chispas</Text>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Ir"
+          color={myColors.secondary}
+          onPress={() => {
+            changeScreen(1);
+          }}
+        />
+      </View>
+      <Text>Pastel de vainilla</Text>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Ir"
+          color={myColors.secondary}
+          onPress={() => {
+            changeScreen(3);
+          }}
+        />
       </View>
     </View>
   );
