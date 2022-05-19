@@ -4,6 +4,7 @@ import Ingredient from "../components/Ingredient";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { useState, useEffect } from "react";
 import myColors from "../constants/colors";
+import myWarnings from "../constants/recipeWarnings";
 
 const brownSugarVolumeInMl = 59.1470591;
 const standardSugarVolumeInMl = 59.1470591;
@@ -20,7 +21,6 @@ const GalletasConChispas = ({
   changeIngredientMass,
   changeScreen,
 }) => {
-  console.log("Estamos en galletas ingredientes");
   const [brownSugarVolume, setBrownSugarVolume] =
     useState(brownSugarVolumeInMl);
   const [brownSugarVolumeIndex, setBrownSugarVolumeIndex] = useState(0);
@@ -139,7 +139,6 @@ const GalletasConChispas = ({
   const [data, setData] = useState([]);
 
   const pedirGifs = () => {
-    console.log("se pide gifs");
     const fetchData = async () => {
       const results = await axios("http://api.giphy.com/v1/gifs/search", {
         params: {
@@ -199,7 +198,8 @@ const GalletasConChispas = ({
               ingredientIndex={butterMassIndex}
               changeIngredientMetric={changeButterMass}
               measure={mass}
-              description="de mantequilla a temperatura ambiente"
+              alertText="mantequilla a temperatura ambiente"
+              alertMessage={myWarnings.roomTempButter}
             />
           </li>
           <li>

@@ -21,6 +21,8 @@ const Ingredient = ({
   changeIngredientMetric,
   measure,
   description,
+  alertText,
+  alertMessage,
 }) => {
   let confirmedButton;
   let confirmedMutableIngredient;
@@ -29,12 +31,11 @@ const Ingredient = ({
     confirmedButton = (
       <View style={styles.buttonContainer}>
         <Button
-        title="unidad"
-        color={myColors.secondary}
-        onPress={changeIngredientMetric}
-      />
+          title="unidad"
+          color={myColors.secondary}
+          onPress={changeIngredientMetric}
+        />
       </View>
-      
     );
     confirmedMutableIngredient = (
       <Text>
@@ -53,6 +54,14 @@ const Ingredient = ({
     <View style={styles.ingredientLine}>
       {confirmedMutableIngredient}
       <Text>{description}</Text>
+      <Text
+        onPress={() => {
+          alert(alertMessage);
+        }}
+        style={styles.alertText}
+      >
+        {alertText}
+      </Text>
     </View>
   );
 
@@ -61,7 +70,6 @@ const Ingredient = ({
       <input type="checkbox" />
       <View style={styles.ingredientLine}>{confirmedButton}</View>
       {item}
-      
     </View>
   );
 };
@@ -71,13 +79,17 @@ const styles = StyleSheet.create({
     //display: "flex",
     justifyContent: "space-evenly",
     flexDirection: "row",
-
+    paddingTop: 5,
+    paddingBottom: 5,
   },
   ingredientLine: {},
   buttonContainer: {
     flexDirection: "row",
     marginLeft: 10,
     marginRight: 10,
+  },
+  alertText: {
+    color: "#cf7956",
   },
 });
 

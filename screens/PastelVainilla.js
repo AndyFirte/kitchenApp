@@ -4,6 +4,7 @@ import Ingredient from "../components/Ingredient";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { useState } from "react";
 import myColors from "../constants/colors";
+import myWarnings from "../constants/recipeWarnings";
 
 const standardSugarMassInG = 59.1470591;
 const oilVolumeInMl = 160;
@@ -117,7 +118,6 @@ const PastelVainilla = ({
   const [data, setData] = useState([]);
 
   const pedirGifs = () => {
-    console.log("se pide gifs");
     const fetchData = async () => {
       const results = await axios("http://api.giphy.com/v1/gifs/search", {
         params: {
@@ -169,7 +169,8 @@ const PastelVainilla = ({
               ingredientIndex={oilVolumeIndex}
               changeIngredientMetric={changeOilVolume}
               measure={volume}
-              description="de aceite de sabor suave (aceite de girasol, canola, oliva de sabor suave, maiz)"
+              alertText={"de aceite de sabor suave "}
+              alertMessage={myWarnings.softOil}
             />
           </li>
           <li>
