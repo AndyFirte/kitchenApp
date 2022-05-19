@@ -172,7 +172,7 @@ const GalletasConChispas = ({
       <Text>
         <ul>
           <li>
-            <Ingredient description="1 huevo" />
+            <Ingredient description="  1 huevo" />
           </li>
           <li>
             <Ingredient

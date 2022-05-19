@@ -27,11 +27,14 @@ const Ingredient = ({
 
   if (ingredientMetric) {
     confirmedButton = (
-      <Button
+      <View style={styles.buttonContainer}>
+        <Button
         title="unidad"
         color={myColors.secondary}
         onPress={changeIngredientMetric}
       />
+      </View>
+      
     );
     confirmedMutableIngredient = (
       <Text>
@@ -56,8 +59,9 @@ const Ingredient = ({
   return (
     <View style={styles.ingredient}>
       <input type="checkbox" />
-      {item}
       <View style={styles.ingredientLine}>{confirmedButton}</View>
+      {item}
+      
     </View>
   );
 };
@@ -67,8 +71,14 @@ const styles = StyleSheet.create({
     //display: "flex",
     justifyContent: "space-evenly",
     flexDirection: "row",
+
   },
   ingredientLine: {},
+  buttonContainer: {
+    flexDirection: "row",
+    marginLeft: 10,
+    marginRight: 10,
+  },
 });
 
 export default Ingredient;
