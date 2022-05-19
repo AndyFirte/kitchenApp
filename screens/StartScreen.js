@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import myColors from "../constants/colors";
+import Card from "../components/Card";
 
 const StartScreen = ({ changeScreen }) => {
   return (
@@ -8,8 +9,8 @@ const StartScreen = ({ changeScreen }) => {
       <Text>Esta es la página principal</Text>
       <View>
         <ul>
-          <li>
-            <Text>Galletas con chispas</Text>
+          <Card>
+            <Text style={styles.text}>Galletas con chispas</Text>
             <View style={styles.buttonContainer}>
               <Button
                 title="Ir"
@@ -19,9 +20,9 @@ const StartScreen = ({ changeScreen }) => {
                 }}
               />
             </View>
-          </li>
-          <li>
-            <Text>Pastel de vainilla</Text>
+          </Card>
+          <Card>
+            <Text style={styles.text}>Pastel de vainilla</Text>
             <View style={styles.buttonContainer}>
               <Button
                 title="Ir"
@@ -31,7 +32,7 @@ const StartScreen = ({ changeScreen }) => {
                 }}
               />
             </View>
-          </li>
+          </Card>
         </ul>
       </View>
     </View>
@@ -50,6 +51,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     marginTop: 20,
   },
+  text: {
+    color: 'white',
+  }
 });
 
 export default StartScreen;

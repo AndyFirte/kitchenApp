@@ -151,7 +151,7 @@ const PastelVainilla = ({
       <Text>
         <ul>
           <li>
-            <Ingredient description="3 huevos" />
+            <Ingredient description="  3 huevos" />
           </li>
           <li>
             <Ingredient
